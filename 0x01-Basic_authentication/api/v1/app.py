@@ -36,7 +36,7 @@ def forbidden(error) -> str:
     """
     forb = {"error": "Forbidden"}
 
-    return jsonify(forb, 403)
+    return jsonify(forb), 403
 
 
 if __name__ == "__main__":
