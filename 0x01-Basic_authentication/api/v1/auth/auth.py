@@ -15,15 +15,15 @@ class Auth():
         if (path == None):
             return True
 
-        if (len(excluded_paths) == 0 or excluded_paths == None):
+        if (excluded_paths == None and len(excluded_paths) == 0):
             return True
 
-        if path[-1] != '/':
-            path += '/'
+        if path[-1] != "/":
+            path += "/"
 
         for paths in excluded_paths:
-            if paths.endswith('*'):
-                if path.startswith(paths[:-1]):
+            if paths.startswith("*"):
+                if paths.endswith("/"):
                     return False
             elif path == paths:
                 return False
