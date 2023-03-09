@@ -31,12 +31,16 @@ elif AUTH_TYPE == "session_auth":
 def before_request_callback():
     """Callback"""
     list_of_excluded_paths = ['/api/v1/status/',
-                              '/api/v1/unauthorized/', '/api/v1/forbidden/']
+                              '/api/v1/unauthorized/',
+                              '/api/v1/forbidden/', "/api/v1/auth_session/login/"]
 
     if not auth.require_auth(request.path, list_of_excluded_paths):
         return
 
     if auth.authorization_header(request) is None:
+        abort(401)
+
+    if auth.session_cookie(request) is None:
         abort(401)
 
     current_user = auth.current_user(request)
