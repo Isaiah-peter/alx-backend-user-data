@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """create user model"""
 
-from sqlalchemy.orm import declarative_base, Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import String
+from sqlalchemy.orm import DeclarativeBase
 
 
-Base = declarative_base()
-
+class Base(DeclarativeBase):
+    pass
 
 class User(Base):
     """user table"""
