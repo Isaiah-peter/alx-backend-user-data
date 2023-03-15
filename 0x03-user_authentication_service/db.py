@@ -40,17 +40,18 @@ class DB:
 
     def find_user_by(self, *args, **kwargs) -> User:
         """find user by"""
-        
+
         email_to_check = kwargs.get("email")
         if email_to_check is None:
             raise InvalidRequestError()
-        result = self._session.query(User).filter_by(email=email_to_check).first()
+        result = self._session.query(User).filter_by(
+            email=email_to_check).first()
         if result is None:
             raise NoResultFound()
-        
-        return result
-    
-    def update_user(self, id, *args, **kwargs):
-        """"update user"""
 
-        self._session.query(User).filter(User.id == id).update(kwargs)
+        return result
+
+    # def update_user(self, id, *args, **kwargs):
+    #     """"update user"""
+
+    #     self._session.query(User).filter(User.id == id).update(kwargs)
