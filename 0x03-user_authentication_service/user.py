@@ -14,7 +14,7 @@ class User(Base):
     __tablename__ = 'users'
 
     id: Mapped[int] = Column(Integer, primary_key=True)
-    email: Mapped[str] = Column(String(250), nullable=False)
-    hashed_password: Mapped[str] = Column(String(250), nullable=False)
-    session_id: Mapped[str] = Column(String(250), nullable=True)
-    reset_token: Mapped[str] = Column(String(250), nullable=True)
+    email: Mapped[str] = Column(String(255), nullable=False)
+    hashed_password: Mapped[str] = Column(String(255), nullable=False)
+    session_id: Mapped[str] = Column(String(255), nullable=True)
+    reset_token: Mapped[str] = Column(String(255), nullable=True)
