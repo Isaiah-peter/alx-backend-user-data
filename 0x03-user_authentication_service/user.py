@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """create user model"""
 
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import String, Integer, Column
+from sqlalchemy.orm import declarative_base, Mapped
+from sqlalchemy import String, Column, Integer
 
 
 Base = declarative_base()
@@ -13,8 +13,8 @@ class User(Base):
 
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True)
-    email = Column(String(250), nullable=False)
-    hashed_password = Column(String(250), nullable=False)
-    session_id = Column(String(250), nullable=True)
-    reset_token = Column(String(250), nullable=True)
+    id: Mapped[int] = Column(Integer, primary_key=True)
+    email: Mapped[str] = Column(String(250), nullable=False)
+    hashed_password: Mapped[str] = Column(String(250), nullable=False)
+    session_id: Mapped[str] = Column(String(250), nullable=True)
+    reset_token: Mapped[str] = Column(String(250), nullable=True)
