@@ -6,7 +6,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
-
 from user import Base, User
 
 
@@ -36,20 +35,21 @@ class DB:
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
+
         return user
 
-    def find_user_by(self, *args, **kwargs) -> User:
-        """find user by"""
+    # def find_user_by(self, *args, **kwargs) -> User:
+    #     """find user by"""
 
-        email_to_check = kwargs.get("email")
-        if email_to_check is None:
-            raise InvalidRequestError()
-        result = self._session.query(User).filter_by(
-            email=email_to_check).first()
-        if result is None:
-            raise NoResultFound()
+    #     email_to_check = kwargs.get("email")
+    #     if email_to_check is None:
+    #         raise InvalidRequestError()
+    #     result = self._session.query(User).filter_by(
+    #         email=email_to_check).first()
+    #     if result is None:
+    #         raise NoResultFound()
 
-        return result
+    #     return result
 
     # def update_user(self, id, *args, **kwargs):
     #     """"update user"""
